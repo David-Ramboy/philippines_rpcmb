@@ -28,6 +28,7 @@ class _PhilippineDropdownView<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<T>(
+      decoration: decorationSet,
       key: ValueKey(choices),
       value: value,
       isExpanded: true,
