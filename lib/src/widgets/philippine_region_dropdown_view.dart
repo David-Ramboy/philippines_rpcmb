@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../philippines_rpcmb.dart';
 
-typedef DropdownItemBuilder<T> = DropdownMenuItem<T> Function(BuildContext context, T value);
+typedef DropdownItemBuilder<T> = DropdownMenuItem<T> Function(
+    BuildContext context, T value);
 typedef SelectedItemBuilder<T> = Widget Function(BuildContext context, T value);
 
 class _PhilippineDropdownView<T> extends StatelessWidget {
@@ -14,6 +15,7 @@ class _PhilippineDropdownView<T> extends StatelessWidget {
     required this.itemBuilder,
     required this.hint,
     required this.selectedItemBuilder,
+    this.decorationSet,
   }) : super(key: key);
   final List<T> choices;
   final ValueChanged<T?> onChanged;
@@ -21,6 +23,7 @@ class _PhilippineDropdownView<T> extends StatelessWidget {
   final DropdownItemBuilder<T> itemBuilder;
   final SelectedItemBuilder<T> selectedItemBuilder;
   final Widget hint;
+  final InputDecoration? decorationSet;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,9 @@ class _PhilippineDropdownView<T> extends StatelessWidget {
       items: choices.map((e) => itemBuilder.call(context, e)).toList(),
       hint: hint,
       selectedItemBuilder: (BuildContext context) {
-        return choices.map((e) => selectedItemBuilder.call(context, e)).toList();
+        return choices
+            .map((e) => selectedItemBuilder.call(context, e))
+            .toList();
       },
       onChanged: onChanged,
     );
@@ -45,20 +50,24 @@ class PhilippineRegionDropdownView extends StatelessWidget {
     required this.onChanged,
     this.value,
     this.itemBuilder,
+    this.decorationModify,
   }) : super(key: key);
   final List<Region> regions;
   final ValueChanged<Region?> onChanged;
   final Region? value;
   final DropdownItemBuilder<Region>? itemBuilder;
+  final InputDecoration? decorationModify;
 
   @override
   Widget build(BuildContext context) {
     return _PhilippineDropdownView(
+      decorationSet: decorationModify,
       choices: regions,
       onChanged: onChanged,
       value: value,
       itemBuilder: (BuildContext context, e) {
-        return itemBuilder?.call(context, e) ?? DropdownMenuItem(value: e, child: Text(e.regionName));
+        return itemBuilder?.call(context, e) ??
+            DropdownMenuItem(value: e, child: Text(e.regionName));
       },
       hint: const Text('Select Region'),
       selectedItemBuilder: (BuildContext context, Region value) {
@@ -75,21 +84,25 @@ class PhilippineProvinceDropdownView extends StatelessWidget {
     required this.onChanged,
     this.value,
     this.itemBuilder,
+    this.decorationModify,
   }) : super(key: key);
   final List<Province> provinces;
   final Province? value;
 
   final ValueChanged<Province?> onChanged;
   final DropdownItemBuilder<Province>? itemBuilder;
+  final InputDecoration? decorationModify;
 
   @override
   Widget build(BuildContext context) {
     return _PhilippineDropdownView(
+      decorationSet: decorationModify,
       choices: provinces,
       onChanged: onChanged,
       value: value,
       itemBuilder: (BuildContext context, e) {
-        return itemBuilder?.call(context, e) ?? DropdownMenuItem(value: e, child: Text(e.name));
+        return itemBuilder?.call(context, e) ??
+            DropdownMenuItem(value: e, child: Text(e.name));
       },
       hint: const Text('Select Province'),
       selectedItemBuilder: (BuildContext context, Province value) {
@@ -106,21 +119,25 @@ class PhilippineMunicipalityDropdownView extends StatelessWidget {
     required this.onChanged,
     this.value,
     this.itemBuilder,
+    this.decorationModify,
   }) : super(key: key);
   final List<Municipality> municipalities;
   final Municipality? value;
 
   final ValueChanged<Municipality?> onChanged;
   final DropdownItemBuilder<Municipality>? itemBuilder;
+  final InputDecoration? decorationModify;
 
   @override
   Widget build(BuildContext context) {
     return _PhilippineDropdownView(
+      decorationSet: decorationModify,
       choices: municipalities,
       onChanged: onChanged,
       value: value,
       itemBuilder: (BuildContext context, e) {
-        return itemBuilder?.call(context, e) ?? DropdownMenuItem(value: e, child: Text(e.name));
+        return itemBuilder?.call(context, e) ??
+            DropdownMenuItem(value: e, child: Text(e.name));
       },
       hint: const Text('Select Municipality'),
       selectedItemBuilder: (BuildContext context, Municipality value) {
@@ -137,21 +154,25 @@ class PhilippineBarangayDropdownView extends StatelessWidget {
     required this.onChanged,
     this.value,
     this.itemBuilder,
+    this.decorationModify,
   }) : super(key: key);
   final List<String> barangays;
   final String? value;
 
   final ValueChanged<String?> onChanged;
   final DropdownItemBuilder<String>? itemBuilder;
+  final InputDecoration? decorationModify;
 
   @override
   Widget build(BuildContext context) {
     return _PhilippineDropdownView(
+      decorationSet: decorationModify,
       choices: barangays,
       onChanged: onChanged,
       value: value,
       itemBuilder: (BuildContext context, e) {
-        return itemBuilder?.call(context, e) ?? DropdownMenuItem(value: e, child: Text(e));
+        return itemBuilder?.call(context, e) ??
+            DropdownMenuItem(value: e, child: Text(e));
       },
       hint: const Text('Select Barangay'),
       selectedItemBuilder: (BuildContext context, String value) {
