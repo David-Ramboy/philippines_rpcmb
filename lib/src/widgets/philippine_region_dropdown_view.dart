@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 import '../../philippines_rpcmb.dart';
@@ -15,6 +17,7 @@ class _PhilippineDropdownView<T> extends StatelessWidget {
     required this.itemBuilder,
     required this.hint,
     required this.selectedItemBuilder,
+    this.validatorSet,
     this.decorationSet,
   }) : super(key: key);
   final List<T> choices;
@@ -24,10 +27,12 @@ class _PhilippineDropdownView<T> extends StatelessWidget {
   final SelectedItemBuilder<T> selectedItemBuilder;
   final Widget hint;
   final InputDecoration? decorationSet;
+  final String? Function(T?)? validatorSet;
 
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<T>(
+      validator: validatorSet,
       decoration: decorationSet,
       key: ValueKey(choices),
       value: value,
@@ -45,23 +50,26 @@ class _PhilippineDropdownView<T> extends StatelessWidget {
 }
 
 class PhilippineRegionDropdownView extends StatelessWidget {
-  const PhilippineRegionDropdownView({
-    Key? key,
-    this.regions = philippineRegions,
-    required this.onChanged,
-    this.value,
-    this.itemBuilder,
-    this.decorationModify,
-  }) : super(key: key);
+  const PhilippineRegionDropdownView(
+      {Key? key,
+      this.regions = philippineRegions,
+      required this.onChanged,
+      this.value,
+      this.itemBuilder,
+      this.decorationModify,
+      this.validatorModify})
+      : super(key: key);
   final List<Region> regions;
   final ValueChanged<Region?> onChanged;
   final Region? value;
   final DropdownItemBuilder<Region>? itemBuilder;
   final InputDecoration? decorationModify;
+  final String? Function(Region?)? validatorModify;
 
   @override
   Widget build(BuildContext context) {
     return _PhilippineDropdownView(
+      validatorSet: validatorModify,
       decorationSet: decorationModify,
       choices: regions,
       onChanged: onChanged,
@@ -79,24 +87,27 @@ class PhilippineRegionDropdownView extends StatelessWidget {
 }
 
 class PhilippineProvinceDropdownView extends StatelessWidget {
-  const PhilippineProvinceDropdownView({
-    Key? key,
-    required this.provinces,
-    required this.onChanged,
-    this.value,
-    this.itemBuilder,
-    this.decorationModify,
-  }) : super(key: key);
+  const PhilippineProvinceDropdownView(
+      {Key? key,
+      required this.provinces,
+      required this.onChanged,
+      this.value,
+      this.itemBuilder,
+      this.decorationModify,
+      this.validatorModify})
+      : super(key: key);
   final List<Province> provinces;
   final Province? value;
 
   final ValueChanged<Province?> onChanged;
   final DropdownItemBuilder<Province>? itemBuilder;
   final InputDecoration? decorationModify;
+  final String? Function(Province?)? validatorModify;
 
   @override
   Widget build(BuildContext context) {
     return _PhilippineDropdownView(
+      validatorSet: validatorModify,
       decorationSet: decorationModify,
       choices: provinces,
       onChanged: onChanged,
@@ -121,6 +132,7 @@ class PhilippineMunicipalityDropdownView extends StatelessWidget {
     this.value,
     this.itemBuilder,
     this.decorationModify,
+    this.validatorModify,
   }) : super(key: key);
   final List<Municipality> municipalities;
   final Municipality? value;
@@ -128,10 +140,12 @@ class PhilippineMunicipalityDropdownView extends StatelessWidget {
   final ValueChanged<Municipality?> onChanged;
   final DropdownItemBuilder<Municipality>? itemBuilder;
   final InputDecoration? decorationModify;
+  final String? Function(Municipality?)? validatorModify;
 
   @override
   Widget build(BuildContext context) {
     return _PhilippineDropdownView(
+      validatorSet: validatorModify,
       decorationSet: decorationModify,
       choices: municipalities,
       onChanged: onChanged,
@@ -156,6 +170,7 @@ class PhilippineBarangayDropdownView extends StatelessWidget {
     this.value,
     this.itemBuilder,
     this.decorationModify,
+    this.validatorModify,
   }) : super(key: key);
   final List<String> barangays;
   final String? value;
@@ -163,10 +178,12 @@ class PhilippineBarangayDropdownView extends StatelessWidget {
   final ValueChanged<String?> onChanged;
   final DropdownItemBuilder<String>? itemBuilder;
   final InputDecoration? decorationModify;
+  final String? Function(String?)? validatorModify;
 
   @override
   Widget build(BuildContext context) {
     return _PhilippineDropdownView(
+      validatorSet: validatorModify,
       decorationSet: decorationModify,
       choices: barangays,
       onChanged: onChanged,
