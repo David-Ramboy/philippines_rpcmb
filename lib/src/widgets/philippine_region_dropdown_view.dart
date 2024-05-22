@@ -99,7 +99,7 @@ class PhilippineProvinceDropdownView extends StatelessWidget {
   final List<Province> provinces;
   final Province? value;
 
-  final ValueChanged<Province?> onChanged;
+  final ValueChanged<Province?>? onChanged;
   final DropdownItemBuilder<Province>? itemBuilder;
   final InputDecoration? decorationModify;
   final String? Function(Province?)? validatorModify;
@@ -137,7 +137,7 @@ class PhilippineMunicipalityDropdownView extends StatelessWidget {
   final List<Municipality> municipalities;
   final Municipality? value;
 
-  final ValueChanged<Municipality?> onChanged;
+  final ValueChanged<Municipality?>? onChanged;
   final DropdownItemBuilder<Municipality>? itemBuilder;
   final InputDecoration? decorationModify;
   final String? Function(Municipality?)? validatorModify;
@@ -175,7 +175,7 @@ class PhilippineBarangayDropdownView extends StatelessWidget {
   final List<String> barangays;
   final String? value;
 
-  final ValueChanged<String?> onChanged;
+  final ValueChanged<String?>? onChanged;
   final DropdownItemBuilder<String>? itemBuilder;
   final InputDecoration? decorationModify;
   final String? Function(String?)? validatorModify;
