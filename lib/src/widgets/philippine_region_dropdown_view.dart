@@ -12,7 +12,7 @@ class _PhilippineDropdownView<T> extends StatelessWidget {
   const _PhilippineDropdownView({
     Key? key,
     required this.choices,
-    required this.onChanged,
+    this.onChanged,
     this.value,
     required this.itemBuilder,
     required this.hint,
@@ -21,7 +21,7 @@ class _PhilippineDropdownView<T> extends StatelessWidget {
     this.decorationSet,
   }) : super(key: key);
   final List<T> choices;
-  final ValueChanged<T?> onChanged;
+  final ValueChanged<T?>? onChanged;
   final T? value;
   final DropdownItemBuilder<T> itemBuilder;
   final SelectedItemBuilder<T> selectedItemBuilder;
@@ -53,14 +53,14 @@ class PhilippineRegionDropdownView extends StatelessWidget {
   const PhilippineRegionDropdownView(
       {Key? key,
       this.regions = philippineRegions,
-      required this.onChanged,
+      this.onChanged,
       this.value,
       this.itemBuilder,
       this.decorationModify,
       this.validatorModify})
       : super(key: key);
   final List<Region> regions;
-  final ValueChanged<Region?> onChanged;
+  final ValueChanged<Region?>? onChanged;
   final Region? value;
   final DropdownItemBuilder<Region>? itemBuilder;
   final InputDecoration? decorationModify;
