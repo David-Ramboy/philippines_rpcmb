@@ -35,6 +35,7 @@ class _PhilippineDropdownView<T> extends StatelessWidget {
       validator: validatorSet,
       decoration: decorationSet,
       key: ValueKey(choices),
+      autovalidateMode: AutovalidateMode.always,
       value: value,
       isExpanded: true,
       items: choices.map((e) => itemBuilder.call(context, e)).toList(),
