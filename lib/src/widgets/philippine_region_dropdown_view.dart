@@ -18,6 +18,7 @@ class _PhilippineDropdownView<T> extends StatelessWidget {
     required this.hint,
     required this.selectedItemBuilder,
     this.validatorSet,
+    this.style,
     this.decorationSet,
   }) : super(key: key);
   final List<T> choices;
@@ -28,10 +29,11 @@ class _PhilippineDropdownView<T> extends StatelessWidget {
   final Widget hint;
   final InputDecoration? decorationSet;
   final String? Function(T?)? validatorSet;
-
+  final TextStyle? style;
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<T>(
+      style: style,
       validator: validatorSet,
       decoration: decorationSet,
       key: ValueKey(choices),
@@ -56,6 +58,7 @@ class PhilippineRegionDropdownView extends StatelessWidget {
       this.regions = philippineRegions,
       this.onChanged,
       this.value,
+      this.style,
       this.itemBuilder,
       this.decorationModify,
       this.validatorModify})
@@ -66,6 +69,7 @@ class PhilippineRegionDropdownView extends StatelessWidget {
   final DropdownItemBuilder<Region>? itemBuilder;
   final InputDecoration? decorationModify;
   final String? Function(Region?)? validatorModify;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +77,7 @@ class PhilippineRegionDropdownView extends StatelessWidget {
       validatorSet: validatorModify,
       decorationSet: decorationModify,
       choices: regions,
+      style: style,
       onChanged: onChanged,
       value: value,
       itemBuilder: (BuildContext context, e) {
@@ -94,11 +99,13 @@ class PhilippineProvinceDropdownView extends StatelessWidget {
       required this.onChanged,
       this.value,
       this.itemBuilder,
+      this.style,
       this.decorationModify,
       this.validatorModify})
       : super(key: key);
   final List<Province> provinces;
   final Province? value;
+  final TextStyle? style;
 
   final ValueChanged<Province?>? onChanged;
   final DropdownItemBuilder<Province>? itemBuilder;
@@ -111,6 +118,7 @@ class PhilippineProvinceDropdownView extends StatelessWidget {
       validatorSet: validatorModify,
       decorationSet: decorationModify,
       choices: provinces,
+      style: style,
       onChanged: onChanged,
       value: value,
       itemBuilder: (BuildContext context, e) {
@@ -132,12 +140,13 @@ class PhilippineMunicipalityDropdownView extends StatelessWidget {
     required this.onChanged,
     this.value,
     this.itemBuilder,
+    this.style,
     this.decorationModify,
     this.validatorModify,
   }) : super(key: key);
   final List<Municipality> municipalities;
   final Municipality? value;
-
+  final TextStyle? style;
   final ValueChanged<Municipality?>? onChanged;
   final DropdownItemBuilder<Municipality>? itemBuilder;
   final InputDecoration? decorationModify;
@@ -149,6 +158,7 @@ class PhilippineMunicipalityDropdownView extends StatelessWidget {
       validatorSet: validatorModify,
       decorationSet: decorationModify,
       choices: municipalities,
+      style: style,
       onChanged: onChanged,
       value: value,
       itemBuilder: (BuildContext context, e) {
@@ -169,13 +179,14 @@ class PhilippineBarangayDropdownView extends StatelessWidget {
     required this.barangays,
     required this.onChanged,
     this.value,
+    this.style,
     this.itemBuilder,
     this.decorationModify,
     this.validatorModify,
   }) : super(key: key);
   final List<String> barangays;
   final String? value;
-
+  final TextStyle? style;
   final ValueChanged<String?>? onChanged;
   final DropdownItemBuilder<String>? itemBuilder;
   final InputDecoration? decorationModify;
@@ -188,6 +199,7 @@ class PhilippineBarangayDropdownView extends StatelessWidget {
       decorationSet: decorationModify,
       choices: barangays,
       onChanged: onChanged,
+      style: style,
       value: value,
       itemBuilder: (BuildContext context, e) {
         return itemBuilder?.call(context, e) ??
